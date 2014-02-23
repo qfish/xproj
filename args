@@ -1,0 +1,44 @@
+# !/bin/sh
+
+# Define default return codes
+SUCCESS=0
+ERROR=1
+
+# Help for xproj
+printHelp()
+{
+# echo "
+# USAGE:     
+#      xproj [-n] [-s \\033[4mdir\\033[0m] [-t \\033[4mxcodeproj\\033[0m] [-f framework [framework ...]]
+echo "
+\\033[34mUSAGE\\033[0m:     
+      xproj -s \\033[4mdir\\033[0m [-t \\033[4mxcodeproj\\033[0m] [-n [yes|no]] 
+
+\\033[34mEXAPMLE\\033[0m:
+      xproj -s ./framework -t ./xxx.xcodeproj
+
+\\033[34mDESCRIPTION\\033[0m:
+      A shell script can batch adding compile flags like \`\\033[31m-fno-objc-arc\\033[0m\` 
+      or \`\\033[31m-fobjc-arc\\033[0m\` for all the files under the same dir by processing 
+      the project file.
+
+      The following options are available:
+
+      -----------------------------------------------------------------
+      -n [yes|no]      | Used to specify the compile flags to be added.
+                       | yes is \`\\033[31m-fno-objc-arc\\033[0m\`, no is \`\\033[31m-fobjc-arc\\033[0m\`.
+                       | Default is yes.
+      -----------------------------------------------------------------
+      -s \\033[4mdir\\033[0m           | Specify the dir contains source files
+      -----------------------------------------------------------------
+      -t \\033[4mxcodeproj\\033[0m     | Specify the target xcodeproj file, dafault is 
+                       | the first of *.xcodeproj under the same dir.
+      -----------------------------------------------------------------
+"
+}
+
+# xproj doesn't work without any input
+if [ "$1" == "" ]; then
+  printHelp
+  exit $ERROR
+fi
