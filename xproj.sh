@@ -1,5 +1,19 @@
 # !/bin/sh
 
+# 目标：
+# 1. 把 framework 文件夹下的所有文件名按行输出到 temp 文件
+# 2. 按行遍历 temp 文件，同时做以下处理
+#   1. 在 project.pbxproj 文件里找到匹配文件名的 `compile flags` 行
+#   2. 在 `compile flags` 里加上  `settings = {COMPILER_FLAGS = "-fno-objc-arc"; };`
+#   3. 效果如下:
+#        E95B5B3118B59E64009491EE /* Bee_Package.m in Sources */ = {isa = PBXBuildFile; fileRef = E95B585918B59E63009491EE /* Bee_Package.m */; };
+#        =》
+#        E95B5C0D18B59E64009491EE /* Bee_Package.m in Sources */ = {isa = PBXBuildFile; fileRef = E95B5A4118B59E64009491EE /* Bee_Package.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+
+# 匹配模式
+# TARGET_PATTERN='/* '.'${name}'.' in Sources */ = '
+# TARGET_PATTERN="(fileRef = \w+ /* "${name}" \*/;)"
+
 # 定义常量
 CONST_SUCCESS=0
 CONST_ERROR=1
@@ -62,12 +76,15 @@ setup()
   if [[ ! -f "$TARGET_PATH" ]]; then 
     local xcodeproj=$(find . -type d -name \*.xcodeproj | head -1)
     if [[ $xcodeproj != "" ]]; then
-      if [[ ! -f "$xcodeproj/project.pbxproj" ]]; then 
+      if [[ -f "$xcodeproj/project.pbxproj" ]]; then 
         TARGET_PATH="$xcodeproj/project.pbxproj"
       else
         echo "There is no project.pbxproj under current dir."
         return $CONST_ERROR
       fi
+    else
+      echo "There is no project.pbxproj under current dir."
+        return $CONST_ERROR
     fi
   fi
 }
@@ -98,6 +115,7 @@ process()
   # ## STEP 3.2
   # 备份
   cp $TARGET_PATH $TARGET_PATH.bak
+  echo "Progressing: $TARGET_PATH"
   # 遍历每一行，获取文件名
   local i=0
   while read line; do
