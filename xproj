@@ -195,26 +195,29 @@ fi
 while getopts "e:ns:t:" arg; do
   case $arg in
     e)
-      ARC_FLAGS=$CONST_ARC_FLAGS
+      BUILD_SETTING_ENABLE=false
       ;;
     n)
       ARC_FLAGS=$CONST_ARC_FLAGS
       ;;
     s)
       if [[ ! -d "$OPTARG" ]]; then 
-        echo "$OPTARG does not exist. Please check and try again."
+        echo "<$OPTARG> does not exist. Please check and try again."
         exit $CONST_ERROR
       else
         SOURCE_PATH="$OPTARG"
       fi
       ;;
     t)
-      TARGET_PATH="$OPTARG"
-      if [[ ! -f "$TARGET_PATH" ]]; then 
-        echo "$OPTARG does not exist. Please check and try again."
-        exit $CONST_ERROR
-      else
+      if [[ -f "$OPTARG" ]]; then
         TARGET_PATH="$OPTARG"
+      else
+        if [[ -f "$OPTARG/project.pbxproj" ]]; then
+          TARGET_PATH="$OPTARG/project.pbxproj"
+        else
+          echo "<$OPTARG/project.pbxproj> does not exist. Please check and try again."
+          exit $CONST_ERROR
+        fi
       fi
       ;;
     ?) #当有不认识的选项的时候arg为?
@@ -226,5 +229,8 @@ while getopts "e:ns:t:" arg; do
 done
 
 setup
-process
-cleanup
+
+echo $TARGET_PATH
+
+# process
+# cleanup
