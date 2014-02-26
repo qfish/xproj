@@ -31,8 +31,11 @@ sh xproj -s 需要添加编译参数的文件所在的文件夹 -t 目标工程�
   
 ```sh
 sh xproj -n -s 需要添加编译参数的文件所在的文件夹 -t 目标工程文件
+
+# xproj -n -s framework -t test.xcodeproj/
+
 ```
-## [EXAMPLE](http://qfi.sh/)
+## [EXAMPLE（todo）](http://qfi.sh/#)
 
 ## 提示
 
