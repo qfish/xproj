@@ -23,7 +23,7 @@ __xproj__ 是一个shell脚本，可以给工程批量添加 `-fno-objc-arc` 和
 ```sh
 sh xproj -s 需要添加编译参数的文件所在的文件夹 -t 目标工程文件
 
-# xproj -s framework -t test.shop.xcodeproj
+# xproj -s framework -t test.xcodeproj/
 
 ```
 
