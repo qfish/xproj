@@ -44,19 +44,27 @@ NAME
   xproj - batch adding compile flags like `-fno-objc-arc`or `-fobjc-arc`
 
 SYNOPSIS
-  xproj -s dir [-t xcodeproj] [-ne]
+  xproj -s dir [-t xcodeproj] [-n]
 
 DESCRIPTION
-  
+  A shell script can batch adding compile flags like `-fno-objc-arc` 
+      or `-fobjc-arc` for all the files under the same dir by processing 
+      the project file.
 
 OPTIONS
-  -p, --print-only
-    Only prints the .dot file to STDOUT. Mutually exclusive with
-    --image-only.
-
-  -i, --image-only
-    Only generates an image of the graph, and a .dot file beforehand.
-    Mutually exclusive with --print-only.
+      -n               | Used to specify the compile flag to be 
+                       | `-fobjc-arc`. Default is `-fno-objc-arc`.
+      -----------------------------------------------------------------
+      -e               | Used to disable from modifying some extented
+                       | `build settings`: 
+                       | 1. Direct usage of 'isa' to 'NO'
+                       | 2. Enable Module(C and Objective-C) to 'NO'
+      -----------------------------------------------------------------
+      -s dir           | Specify the dir contains source files
+      -----------------------------------------------------------------
+      -t xcodeproj     | Specify the target xcodeproj file, dafault is 
+                       | the first of *.xcodeproj under the same dir.
+      -----------------------------------------------------------------
 
 AUTHOR
   Written by QFish <qfish.cn@gmail.com>

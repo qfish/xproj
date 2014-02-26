@@ -41,7 +41,7 @@ ehelp()
 #      xproj [-n] [-s \\033[4mdir\\033[0m] [-t \\033[4mxcodeproj\\033[0m] [-f framework [framework ...]]
 echo "
 \\033[34mUSAGE\\033[0m:     
-      xproj -s \\033[4mdir\\033[0m [-t \\033[4mxcodeproj\\033[0m] [-n [yes|no]] 
+      xproj -s \\033[4mdir\\033[0m [-t \\033[4mxcodeproj\\033[0m] [-n] [-e]
 
 \\033[34mEXAPMLE\\033[0m:
       xproj -s ./framework -t ./xxx.xcodeproj
