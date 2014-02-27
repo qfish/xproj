@@ -76,17 +76,17 @@ echo "
 setup()
 {
   if [[ ! -f "$TARGET_PATH" ]]; then 
-    XCODEPROJ_PATH=$(find . -type d -name \*.XCODEPROJ_PATH | head -1)
+    XCODEPROJ_PATH=$(find . -type d -name \*.xcodeproj | head -1)
     if [[ $XCODEPROJ_PATH != "" ]]; then
       if [[ -f "$XCODEPROJ_PATH/project.pbxproj" ]]; then 
         TARGET_PATH="$XCODEPROJ_PATH/project.pbxproj"
       else
         echo "There is no project.pbxproj under current dir."
-        return $CONST_ERROR
+        exit $CONST_ERROR
       fi
     else
       echo "There is no project.pbxproj under current dir."
-        return $CONST_ERROR
+        exit $CONST_ERROR
     fi
   fi
 }
@@ -117,7 +117,7 @@ process()
   # ## STEP 3.2
   # 备份
   # cp $TARGET_PATH $TARGET_PATH.bak
-  cp $XCODEPROJ_PATH $XCODEPROJ_PATH.bak
+  cp -rf "$XCODEPROJ_PATH" "$XCODEPROJ_PATH.bak"
   echo "Progressing: $TARGET_PATH"
   # 遍历每一行，获取文件名
   local i=0
