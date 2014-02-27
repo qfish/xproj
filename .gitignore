@@ -21,3 +21,10 @@ DerivedData
 Pods
 
 *.xcodeproj
+
+/xproj.screenflow/
+/xproj.mp4
+/xproj-narc.psd
+/xproj-narc.gif
+/xproj-arc.psd
+/xproj-arc.gif
