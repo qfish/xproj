@@ -8,7 +8,7 @@ __xproj__ 是一个shell脚本，可以给工程批量添加 `-fno-objc-arc` 和
 如果你的项目是 `非arc` ，但是用到了 `arc` 的第三方，或者反之，这时候你有两种选择，`cocopods` 或者手动添加。
 
 1. 使用 `cocopods` 当然是推荐方案，但是出于一些原因，你可能不用它。
-2. 这时候你只能手动添加，当然在Xcode里可以多选（ `CMD` or `SHIFT` ），然后双击其中一个文件，接着在弹出的对输入框里添加。
+2. 这时候你只能手动添加，当然在Xcode里可以多选（ `CMD` or `SHIFT` ），然后双击其中一个文件，接着在弹出的输入框里添加。
 
 **但是**如果文件**巨多**，在 `Build Phases -> Compile Sources` 里既有项目原来的文件，又有你刚刚拉进去的文件，考验你耐心的时候到了~ 肿么办?
 
@@ -21,9 +21,9 @@ __xproj__ 是一个shell脚本，可以给工程批量添加 `-fno-objc-arc` 和
 ### 加 `-fno-objc-arc`
 
 ```sh
-sh xproj -s 需要添加编译参数的文件所在的文件夹 -t 目标工程文件
+$ sh xproj -s 需要添加编译参数的文件所在的文件夹 -t 目标工程文件
 
-# xproj -s framework -t test.xcodeproj/
+# sh xproj -s ./framework -t test.xcodeproj
 
 ```
 ![xproj-narc](https://f.cloud.github.com/assets/679824/2280662/742d4a00-9f8f-11e3-947e-dc97ad8d976f.gif)
@@ -31,9 +31,9 @@ sh xproj -s 需要添加编译参数的文件所在的文件夹 -t 目标工程�
 ### 加 `-fobjc-arc`
   
 ```sh
-sh xproj -n -s 需要添加编译参数的文件所在的文件夹 -t 目标工程文件
+$ sh xproj -n -s 需要添加编译参数的文件所在的文件夹 -t 目标工程文件
 
-# xproj -n -s framework -t test.xcodeproj/
+# sh xproj -n -s ./ZXingObjC -t test.xcodeproj
 
 ```
 
