@@ -22,7 +22,7 @@ Pods
 
 *.xcodeproj
 
-/xproj.screenflow/
+/xproj.screenflow
 /xproj.mp4
 /xproj-narc.psd
 /xproj-narc.gif
