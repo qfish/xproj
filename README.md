@@ -26,6 +26,7 @@ sh xproj -s 需要添加编译参数的文件所在的文件夹 -t 目标工程�
 # xproj -s framework -t test.xcodeproj/
 
 ```
+![xproj-narc](https://f.cloud.github.com/assets/679824/2280662/742d4a00-9f8f-11e3-947e-dc97ad8d976f.gif)
 
 ### 加 `-fobjc-arc`
   
@@ -35,7 +36,8 @@ sh xproj -n -s 需要添加编译参数的文件所在的文件夹 -t 目标工�
 # xproj -n -s framework -t test.xcodeproj/
 
 ```
-## [EXAMPLE（todo）](http://qfi.sh/#)
+
+![xproj-arc](https://f.cloud.github.com/assets/679824/2280651/441355bc-9f8f-11e3-8474-2387867cbe1f.gif)
 
 ## 提示
 
