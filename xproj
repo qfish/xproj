@@ -25,7 +25,7 @@ SOURCE_PATH=""
 TARGET_PATH=""
 TEMPFILE_PATH="temp.txt"
 FILE_BLACKLIST='\.h$|\.DS_Store|\.sh$|\.png$|\.svn$'
-FILE_WHITELIST='\.m$|\.mm$|\.c$'
+FILE_WHITELIST='\.m$|\.mm$'
 
 XCODEPROJ_PATH=""
 
